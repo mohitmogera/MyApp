@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
             authenticate_or_request_with_http_token do |token|
             begin
                 puts("auth called")
-                jwt_payload = JWT.decode(token, Rails.application.secrets.secret_key_base).first
+                jwt_payload = JWT.decode(token, Rails.application.secret_key_base).first
                
                 puts(jwt_payload)
                 @current_user_id = jwt_payload['id']
