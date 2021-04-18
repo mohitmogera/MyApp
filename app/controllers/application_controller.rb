@@ -19,7 +19,8 @@ class ApplicationController < ActionController::Base
         if request.headers['Authorization'].present?
             authenticate_or_request_with_http_token do |token|
             begin
-                puts("auth called")
+                puts("Rails key")
+                puts(Rails.application.secret_key_base)
                 jwt_payload = JWT.decode(token, Rails.application.secret_key_base).first
                
                 puts(jwt_payload)
